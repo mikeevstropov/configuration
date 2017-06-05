@@ -45,10 +45,10 @@ $value = $configuration->get('my_parameter'); // my_value
 // set parameter
 // and save it to the file of modified configuration
 $configuration->set('my_parameter', 'new_value');
-
+  
 // check it
 $configuration->get('my_parameter'); // new_value
-
+  
 // now we can remove instance or exit form runtime
 unset($configuration);
   
@@ -60,13 +60,13 @@ $configuration = new Configuration(
   
 // get parameter
 $value = $configuration->get('my_parameter'); // new_value
-
+  
 // it has
 $configuration->get('my_parameter'); // true
-
+  
 // remove
 $configuration->remove('my_parameter');
-
+  
 // not defined
 $configuration->get('my_parameter'); // false
 
