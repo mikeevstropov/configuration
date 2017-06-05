@@ -58,7 +58,7 @@ $configuration = new Configuration(
     $modifiedFile
 );
   
-// get parameter
+// and check saved value
 $value = $configuration->get('my_parameter'); // new_value
   
 // it has
