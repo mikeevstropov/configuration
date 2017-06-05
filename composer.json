@@ -1,0 +1,31 @@
+{
+    "name": "mikeevstropov/configuration",
+    "description": "Read and write configuration parameters to the YAML file.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mike Evstropov",
+            "email": "mike.evstropov@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "symfony/yaml": "^3.3",
+        "webmozart/assert": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mikeevstropov\\": ["src", "tests"]
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "scripts": {
+        "test": "phpunit tests --bootstrap vendor/autoload.php",
+        "post-install-cmd": [
+            "mkdir var var/temp"
+        ]
+    }
+}

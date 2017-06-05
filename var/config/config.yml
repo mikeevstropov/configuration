@@ -1,0 +1,8 @@
+# var/config/config.yml
+
+parameter_integer: 4004
+parameter_string: 'originString'
+parameter_array: ['a', 'b', 'c']
+parameter_remove: 'will_be_removed'
+parameter_it_has: 'it has'
+parameter_Case_Sensitive: 'insensitive'
