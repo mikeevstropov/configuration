@@ -62,13 +62,13 @@ $configuration = new Configuration(
 $value = $configuration->get('my_parameter'); // new_value
   
 // it has
-$configuration->get('my_parameter'); // true
+$configuration->has('my_parameter'); // true
   
 // remove
 $configuration->remove('my_parameter');
   
 // not defined
-$configuration->get('my_parameter'); // false
+$configuration->has('my_parameter'); // false
   
 // also you can use "strict getter" to get existed value
 // or throw InvalidArgumentException if not
