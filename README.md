@@ -69,6 +69,10 @@ $configuration->remove('my_parameter');
   
 // not defined
 $configuration->get('my_parameter'); // false
+  
+// also you can use "strict getter" to get existed value
+// or throw InvalidArgumentException if not
+$configuration->getStrict('my_parameter'); // thrown InvalidArgumentException
 
 ```
 
