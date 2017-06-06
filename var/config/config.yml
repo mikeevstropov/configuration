@@ -6,3 +6,5 @@ parameter_array: ['a', 'b', 'c']
 parameter_remove: 'will_be_removed'
 parameter_it_has: 'it has'
 parameter_Case_Sensitive: 'insensitive'
+parameter_strict: 'strict'
+parameter_strict_null: null

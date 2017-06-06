@@ -14,6 +14,16 @@ interface ConfigurationInterface
     function get($name);
 
     /**
+     * Get existed parameter or throw exception
+     *
+     * @param  string $name
+     *
+     * @throws \InvalidArgumentException
+     * @return mixed
+     */
+    function getStrict($name);
+
+    /**
      * Set parameter
      *
      * @param  string $name

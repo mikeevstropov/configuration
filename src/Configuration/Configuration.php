@@ -89,6 +89,26 @@ class Configuration implements ConfigurationInterface
             : null;
     }
 
+    public function getStrict($name)
+    {
+        Assert::stringNotEmpty(
+            $name,
+            'Parameter name must be not empty string, %s given.'
+        );
+
+        if (
+            !array_key_exists($name, $this->parameters)
+            || $this->parameters[$name] === null
+        ) {
+
+            throw new \InvalidArgumentException(
+                "You have requested a non-existent parameter \"$name\"."
+            );
+        }
+
+        return $this->parameters[$name];
+    }
+
     public function set($name, $value)
     {
         Assert::stringNotEmpty(

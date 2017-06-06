@@ -252,4 +252,65 @@ class ConfigurationTest extends TestCase
             $configuration->get($nameInsensitive)
         );
     }
+
+    public function testCanGetStrict()
+    {
+        $name = 'parameter_strict';
+
+        $value = 'strict';
+
+        $configuration = new Configuration(
+            $this->originFile,
+            $this->modifiedFile
+        );
+
+        $this->assertTrue(
+            $configuration->has($name)
+        );
+
+        $this->assertSame(
+            $value,
+            $configuration->getStrict($name)
+        );
+    }
+
+    public function testCannotGetStrictNotDefined()
+    {
+        $name = 'parameter_strict_not_defined';
+
+        $configuration = new Configuration(
+            $this->originFile,
+            $this->modifiedFile
+        );
+
+        try {
+
+            $configuration->getStrict($name);
+
+        } catch (\InvalidArgumentException $exception) {}
+
+        $this->assertTrue(
+            isset($exception)
+        );
+    }
+
+    public function testCannotGetStrictNull()
+    {
+        $name = 'parameter_strict_null';
+
+        $configuration = new Configuration(
+            $this->originFile,
+            $this->modifiedFile
+        );
+
+        try {
+
+            $configuration->getStrict($name);
+
+        } catch (\InvalidArgumentException $exception) {}
+
+        $this->assertTrue(
+            isset($exception)
+        );
+    }
 }
