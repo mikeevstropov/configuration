@@ -313,4 +313,91 @@ class ConfigurationTest extends TestCase
             isset($exception)
         );
     }
+
+    public function testCanGetStrictByTypeInteger()
+    {
+        $name = 'parameter_strict_by_type_integer';
+
+        $expectedValue = 10;
+
+        $configuration = new Configuration(
+            $this->originFile,
+            $this->modifiedFile
+        );
+
+        $value = $configuration->getStrict(
+            $name,
+            'integer'
+        );
+
+        $this->assertSame(
+            $expectedValue,
+            $value
+        );
+    }
+
+    public function testCanGetStrictByTypeString()
+    {
+        $name = 'parameter_strict_by_type_string';
+
+        $expectedValue = 'my-string';
+
+        $configuration = new Configuration(
+            $this->originFile,
+            $this->modifiedFile
+        );
+
+        $value = $configuration->getStrict(
+            $name,
+            'string'
+        );
+
+        $this->assertSame(
+            $expectedValue,
+            $value
+        );
+    }
+
+    public function testCanGetStrictByTypeArray()
+    {
+        $name = 'parameter_strict_by_type_array';
+
+        $expectedValue = ['a', 'b', 'c'];
+
+        $configuration = new Configuration(
+            $this->originFile,
+            $this->modifiedFile
+        );
+
+        $value = $configuration->getStrict(
+            $name,
+            'array'
+        );
+
+        $this->assertSame(
+            $expectedValue,
+            $value
+        );
+    }
+
+    public function testCannotGetStrictByType()
+    {
+        $name = 'parameter_strict_by_type_error';
+
+        $configuration = new Configuration(
+            $this->originFile,
+            $this->modifiedFile
+        );
+
+        try {
+            $configuration->getStrict(
+                $name,
+                'string'
+            );
+        } catch (\InvalidArgumentException $exception) {}
+
+        $this->assertTrue(
+            isset($exception)
+        );
+    }
 }

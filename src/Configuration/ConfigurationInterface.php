@@ -14,14 +14,17 @@ interface ConfigurationInterface
     function get($name);
 
     /**
-     * Get existed parameter or throw exception
+     * Get existed parameter and check the type if passed
+     * or throw exception
      *
-     * @param  string $name
+     * @param string      $name
+     * @param null|string $type
      *
+     * @throws \InvalidArgumentException
      * @throws \InvalidArgumentException
      * @return mixed
      */
-    function getStrict($name);
+    function getStrict($name, $type = null);
 
     /**
      * Set parameter

@@ -8,3 +8,7 @@ parameter_it_has: 'it has'
 parameter_Case_Sensitive: 'insensitive'
 parameter_strict: 'strict'
 parameter_strict_null: null
+parameter_strict_by_type_integer: 10
+parameter_strict_by_type_string: 'my-string'
+parameter_strict_by_type_array: ['a', 'b', 'c']
+parameter_strict_by_type_error: ['y']

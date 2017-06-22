@@ -71,8 +71,12 @@ $configuration->remove('my_parameter');
 $configuration->has('my_parameter'); // false
   
 // also you can use "strict getter" to get existed value
-// or throw InvalidArgumentException if not
+// or thrown InvalidArgumentException if not
 $configuration->getStrict('my_parameter'); // thrown InvalidArgumentException
+
+// "strict getter" provide type hinting by second argument
+// and thrown InvalidArgumentException if does not match
+$configuration->getStrict('my_parameter', 'array'); // thrown InvalidArgumentException
 
 ```
 

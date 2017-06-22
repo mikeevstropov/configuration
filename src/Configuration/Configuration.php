@@ -89,11 +89,18 @@ class Configuration implements ConfigurationInterface
             : null;
     }
 
-    public function getStrict($name)
-    {
+    public function getStrict(
+        $name,
+        $type = null
+    ) {
         Assert::stringNotEmpty(
             $name,
             'Parameter name must be not empty string, %s given.'
+        );
+
+        Assert::nullOrStringNotEmpty(
+            $type,
+            'To get configuration parameter in strict mode, configuration is require an argument "type" as null or not empty string, %s given.'
         );
 
         if (
@@ -106,7 +113,17 @@ class Configuration implements ConfigurationInterface
             );
         }
 
-        return $this->parameters[$name];
+        $value = $this->parameters[$name];
+
+        if ($type && gettype($value) !== $type)
+            throw new \InvalidArgumentException(sprintf(
+                'You have requested a parameter "%s" as type of "%s", "%s" given.',
+                $name,
+                gettype($value),
+                $type
+            ));
+
+        return $value;
     }
 
     public function set($name, $value)
