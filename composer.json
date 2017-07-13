@@ -14,13 +14,18 @@
         "symfony/yaml": "^3.0",
         "webmozart/assert": "^1.0"
     },
-    "autoload": {
-        "psr-4": {
-            "Mikeevstropov\\": ["src", "tests"]
-        }
-    },
     "require-dev": {
         "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mikeevstropov\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mikeevstropov\\": "tests"
+        }
     },
     "scripts": {
         "test": "phpunit tests --bootstrap vendor/autoload.php",
