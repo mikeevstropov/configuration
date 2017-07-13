@@ -188,4 +188,9 @@ class Configuration implements ConfigurationInterface
         if (array_key_exists($name, $this->parameters))
             $this->set($name, null);
     }
+
+    public function keys()
+    {
+        return array_keys($this->parameters);
+    }
 }

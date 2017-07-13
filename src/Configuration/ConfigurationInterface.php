@@ -53,4 +53,11 @@ interface ConfigurationInterface
      * @return void
      */
     function remove($name);
+
+    /**
+     * Get parameter keys
+     *
+     * @return array
+     */
+    function keys();
 }

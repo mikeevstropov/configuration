@@ -3,6 +3,7 @@
 namespace Mikeevstropov\Configuration;
 
 use PHPUnit\Framework\TestCase;
+use Webmozart\Assert\Assert;
 
 class ConfigurationTest extends TestCase
 {
@@ -398,6 +399,39 @@ class ConfigurationTest extends TestCase
 
         $this->assertTrue(
             isset($exception)
+        );
+    }
+
+    public function testCanKeys()
+    {
+        $configuration = new Configuration(
+            $this->originFile,
+            $this->modifiedFile
+        );
+
+        $keys = $configuration->keys();
+
+        Assert::isArray(
+            $keys
+        );
+
+        $reflectionClass = new \ReflectionClass(
+            Configuration::class
+        );
+
+        $reflectionProperty = $reflectionClass->getProperty('parameters');
+
+        $reflectionProperty->setAccessible(true);
+
+        $parameters = $reflectionProperty->getValue(
+            $configuration
+        );
+
+        $parametersKeys = array_keys($parameters);
+
+        Assert::same(
+            $parametersKeys,
+            $keys
         );
     }
 }
