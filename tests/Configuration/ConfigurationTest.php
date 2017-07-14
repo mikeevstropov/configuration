@@ -517,6 +517,29 @@ class ConfigurationTest extends TestCase
         );
     }
 
+    public function testCannotGetAssertBadMethod()
+    {
+        $name = 'parameter_assert_not_existed';
+
+        $configuration = new Configuration(
+            $this->originFile,
+            $this->modifiedFile
+        );
+
+        try {
+
+            $configuration->getAssert(
+                $name,
+                'undefinedMethod'
+            );
+
+        } catch (\BadMethodCallException $exception) {}
+
+        Assert::true(
+            isset($exception)
+        );
+    }
+
     public function testCanKeys()
     {
         $configuration = new Configuration(

@@ -138,12 +138,6 @@ class Configuration implements ConfigurationInterface
             'Method name of the class Webmozart\Assert must be not empty string, %s given.'
         );
 
-        Assert::methodExists(
-            Assert::class,
-            $method,
-            'Method %s is not defined in '. Assert::class .'.'
-        );
-
         $value = array_key_exists($name, $this->parameters)
             ? $this->parameters[$name]
             : null;
