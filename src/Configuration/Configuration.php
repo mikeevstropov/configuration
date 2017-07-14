@@ -141,7 +141,7 @@ class Configuration implements ConfigurationInterface
         Assert::methodExists(
             Assert::class,
             $method,
-            'Method "%2$s" is not defined in %s.'
+            'Method %s is not defined in '. Assert::class .'.'
         );
 
         $value = array_key_exists($name, $this->parameters)
