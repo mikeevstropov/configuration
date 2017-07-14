@@ -126,6 +126,50 @@ class Configuration implements ConfigurationInterface
         return $value;
     }
 
+    public function getAssert($name, $method)
+    {
+        Assert::stringNotEmpty(
+            $name,
+            'Parameter name must be not empty string, %s given.'
+        );
+
+        Assert::stringNotEmpty(
+            $method,
+            'Method name of the class Webmozart\Assert must be not empty string, %s given.'
+        );
+
+        Assert::methodExists(
+            Assert::class,
+            $method,
+            'Method "%2$s" is not defined in %s.'
+        );
+
+        $value = array_key_exists($name, $this->parameters)
+            ? $this->parameters[$name]
+            : null;
+
+        $arguments = func_get_args();
+
+        $argumentsAssert = [
+            $value
+        ];
+
+        if (isset($arguments[2])) {
+
+            for ($i = 2, $l = count($arguments); $i < $l; $i++) {
+
+                $argumentsAssert[] = $arguments[$i];
+            }
+        }
+
+        call_user_func_array(
+            Assert::class .'::'. $method,
+            $argumentsAssert
+        );
+
+        return $value;
+    }
+
     public function set($name, $value)
     {
         Assert::stringNotEmpty(

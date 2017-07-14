@@ -78,6 +78,14 @@ $configuration->getStrict('my_parameter'); // thrown InvalidArgumentException
 // and thrown InvalidArgumentException if does not match
 $configuration->getStrict('my_parameter', 'array'); // thrown InvalidArgumentException
 
+// method getAssert provide assertion behaviour by method
+// from Webmozart\Assert by second argument
+$configuration->getAssert('my_parameter', 'nullOrStringNotEmpty'); // new_value
+
+// arguments following the second will be passed to
+// the assertion method from Webmozart\Assert
+$configuration->getAssert('my_parameter', 'range', 10, 20); // thrown InvalidArgumentException
+
 ```
 
 As you can see, when we are using setter the value will saved

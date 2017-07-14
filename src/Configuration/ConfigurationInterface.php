@@ -21,10 +21,21 @@ interface ConfigurationInterface
      * @param null|string $type
      *
      * @throws \InvalidArgumentException
-     * @throws \InvalidArgumentException
      * @return mixed
      */
     function getStrict($name, $type = null);
+
+    /**
+     * Get parameter and check it with Webmozart\Assert
+     * by passed method to the second argument
+     *
+     * @param string $name
+     * @param string $method
+     *
+     * @throws \InvalidArgumentException
+     * @return mixed
+     */
+    function getAssert($name, $method);
 
     /**
      * Set parameter

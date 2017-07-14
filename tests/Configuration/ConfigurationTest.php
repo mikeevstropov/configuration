@@ -402,6 +402,121 @@ class ConfigurationTest extends TestCase
         );
     }
 
+    public function testCanGetAssertByNoArguments()
+    {
+        $name = 'parameter_assert_string_not_empty';
+
+        $expectedValue = 'not-empty-string';
+
+        $configuration = new Configuration(
+            $this->originFile,
+            $this->modifiedFile
+        );
+
+        $value = $configuration->getAssert(
+            $name,
+            'stringNotEmpty'
+        );
+
+        Assert::same(
+            $value,
+            $expectedValue
+        );
+    }
+
+    public function testCanGetAssertByOneArguments()
+    {
+        $name = 'parameter_assert_greater_than';
+
+        $expectedValue = 5;
+
+        $configuration = new Configuration(
+            $this->originFile,
+            $this->modifiedFile
+        );
+
+        $value = $configuration->getAssert(
+            $name,
+            'greaterThan',
+            4
+        );
+
+        Assert::same(
+            $value,
+            $expectedValue
+        );
+    }
+
+    public function testCanGetAssertByMultipleArguments()
+    {
+        $name = 'parameter_assert_range';
+
+        $expectedValue = 10;
+
+        $configuration = new Configuration(
+            $this->originFile,
+            $this->modifiedFile
+        );
+
+        $value = $configuration->getAssert(
+            $name,
+            'range',
+            9,
+            11
+        );
+
+        Assert::same(
+            $value,
+            $expectedValue
+        );
+    }
+
+    public function testCannotGetAssert()
+    {
+        $name = 'parameter_assert_range_error';
+
+        // $expectedValue = 100;
+
+        $configuration = new Configuration(
+            $this->originFile,
+            $this->modifiedFile
+        );
+
+        try {
+
+            $configuration->getAssert(
+                $name,
+                'range',
+                9,
+                11
+            );
+
+        } catch (\InvalidArgumentException $exception) {}
+
+        Assert::true(
+            isset($exception)
+        );
+    }
+
+    public function testCanGetAssertNotExisted()
+    {
+        $name = 'parameter_assert_not_existed';
+
+        $configuration = new Configuration(
+            $this->originFile,
+            $this->modifiedFile
+        );
+
+        $value = $configuration->getAssert(
+            $name,
+            'null'
+        );
+
+        Assert::null(
+            $value
+        );
+    }
+
     public function testCanKeys()
     {
         $configuration = new Configuration(

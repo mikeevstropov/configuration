@@ -12,3 +12,7 @@ parameter_strict_by_type_integer: 10
 parameter_strict_by_type_string: 'my-string'
 parameter_strict_by_type_array: ['a', 'b', 'c']
 parameter_strict_by_type_error: ['y']
+parameter_assert_string_not_empty: 'not-empty-string'
+parameter_assert_greater_than: 5
+parameter_assert_range: 10
+parameter_assert_range_error: 100
